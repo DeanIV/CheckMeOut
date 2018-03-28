@@ -3,6 +3,7 @@
 order::order() {
   tax = 0.0725;
   closed = false;
+  Observable item;
 }
 
 order::order(double tax) {
@@ -10,10 +11,12 @@ order::order(double tax) {
   closed = false;
 }
 
-void order::addItem(item i) {
+void order::addItem(item i) {//customer and cashier views updated
   if( !closed )
   {
     itemList.push_back(i);
+    item.update();
+    item.notifyObservers();
   }
 }
 
